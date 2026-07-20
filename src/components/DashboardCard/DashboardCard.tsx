@@ -5,18 +5,10 @@ type DashboardCardProps = {
 
 function DashboardCard({ title, value }: DashboardCardProps) {
   return (
-    <div
-      style={{
-        backgroundColor: "#ffffff",
-        borderRadius: "12px",
-        padding: "20px",
-        width: "220px",
-        boxShadow: "0 2px 10px rgba(0,0,0,0.08)",
-      }}
-    >
-      <h3 style={{ margin: 0, color: "#6B7280" }}>{title}</h3>
+    <div className="bg-blue-600 text-white rounded-xl p-6 w-56 shadow-lg">
+      <h3 className="text-sm opacity-80">{title}</h3>
 
-      <h2 style={{ marginTop: "15px" }}>{value}</h2>
+      <h2 className="text-3xl font-bold mt-3">{value}</h2>
     </div>
   );
 }

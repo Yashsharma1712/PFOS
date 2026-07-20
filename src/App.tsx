@@ -20,14 +20,7 @@ function App() {
       >
         <Topbar />
 
-        <div
-  style={{
-    display: "flex",
-    gap: "20px",
-    flexWrap: "wrap",
-    marginTop: "20px",
-  }}
->
+  <div className="flex flex-wrap gap-5 mt-5">
   <DashboardCard
     title="Net Worth"
     value="₹0"
