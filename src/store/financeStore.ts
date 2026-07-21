@@ -1,6 +1,6 @@
 import type { FinanceData } from "../models/Finance";
 
-export const financeData: FinanceData = {
+export let financeData = {
   monthlyIncome: 0,
   monthlyExpenses: 0,
 
