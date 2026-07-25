@@ -27,12 +27,9 @@ const menuItems = [
 function Sidebar() {
   return (
     <aside className="w-64 bg-gray-900 text-white min-h-screen p-5">
-      <h2 className="text-3xl font-bold mb-6">
-  <h2 className="text-3xl font-bold mb-6 text-center">
+      <h2 className="text-3xl font-bold mb-6 text-center">
   PFOS
 </h2>
-</h2>
-
       <hr className="border-gray-700 mb-6" />
 
       <nav className="space-y-1">
