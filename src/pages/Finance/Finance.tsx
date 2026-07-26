@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { financeData } from "../../store/financeStore";
 
 function Finance() {
@@ -32,13 +32,47 @@ function Finance() {
     Number(internet);
 
   const savings = totalIncome - totalExpenses;
+  useEffect(() => {
+  const saved = localStorage.getItem("pfos-finance");
+
+  if (!saved) return;
+
+  const data = JSON.parse(saved);
+
+  setSalary(data.salary || "");
+  setBonus(data.bonus || "");
+  setOtherIncome(data.otherIncome || "");
+
+  setRent(data.rent || "");
+  setFood(data.food || "");
+  setFuel(data.fuel || "");
+  setElectricity(data.electricity || "");
+  setInternet(data.internet || "");
+
+  setBankBalance(data.bankBalance || "");
+  setCashInHand(data.cashInHand || "");
+}, []);
 
   function handleSave() {
-    financeData.monthlyIncome = totalIncome;
-    financeData.monthlyExpenses = totalExpenses;
+    localStorage.setItem(
+  "pfos-finance",
+  JSON.stringify({
+    salary,
+    bonus,
+    otherIncome,
 
-    financeData.bankBalance = Number(bankBalance);
-    financeData.cashInHand = Number(cashInHand);
+    rent,
+    food,
+    fuel,
+    electricity,
+    internet,
+
+    bankBalance,
+    cashInHand,
+  })
+);
+
+alert("Data Saved Successfully!");
 
     alert("Data Saved Successfully!");
   }
