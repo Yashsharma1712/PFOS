@@ -1,10 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import MainLayout from "../layouts/MainLayout";
+
+import MainLayout from "../layouts/mainLayout";
+
 import Dashboard from "../pages/Dashboard/Dashboard";
 import Finance from "../pages/Finance/Finance";
 import Investments from "../pages/Investments/Investments";
 
-function AppRouter() {
+export default function AppRouter() {
   return (
     <BrowserRouter>
       <Routes>
@@ -17,5 +19,3 @@ function AppRouter() {
     </BrowserRouter>
   );
 }
-
-export default AppRouter;

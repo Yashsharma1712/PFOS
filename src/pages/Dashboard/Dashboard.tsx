@@ -22,8 +22,19 @@ const savings = getMonthlySavings(financeData);
         <DashboardCard title="Net Worth" value={`₹${netWorth.toLocaleString("en-IN")}`} />
         <DashboardCard title="Assets" value={`₹${assets.toLocaleString("en-IN")}`} />
         <DashboardCard title="Liabilities" value={`₹${liabilities.toLocaleString("en-IN")}`} />
-        <DashboardCard title="Monthly Income" value={`₹${financeData.monthlyIncome.toLocaleString("en-IN")}`} />
-        <DashboardCard title="Monthly Expenses" value={`₹${financeData.monthlyExpenses.toLocaleString("en-IN")}`} />
+        <DashboardCard
+  title="Monthly Income"
+  value={`₹${financeData.income
+    .reduce((sum, item) => sum + item.amount, 0)
+    .toLocaleString("en-IN")}`}
+/>
+
+<DashboardCard
+  title="Monthly Expenses"
+  value={`₹${financeData.expenses
+    .reduce((sum, item) => sum + item.amount, 0)
+    .toLocaleString("en-IN")}`}
+/>
       </div>
     </>
   );
