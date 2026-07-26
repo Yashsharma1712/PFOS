@@ -8,6 +8,7 @@ import {
 } from "../../utils/calculations";
 import DashboardCard from "../../components/DashboardCard/DashboardCard";
 import AssetAllocationChart from "../../components/dashboard/AssetAllocationChart";
+import InvestmentSummary from "../../components/dashboard/InvestmentSummary";
 
 function Dashboard() {
   const finance = useMemo(() => {
@@ -97,6 +98,10 @@ const investments = useMemo(() => {
 />
       </div>
       <div className="mt-8">
+  <InvestmentSummary investments={investments} />
+</div>
+
+<div className="mt-8">
   <AssetAllocationChart investments={investments} />
 </div>
     </>

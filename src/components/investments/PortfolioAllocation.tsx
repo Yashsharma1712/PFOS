@@ -1,3 +1,4 @@
+import { ASSET_COLORS } from "../../constants/assetColors";
 import {
   PieChart,
   Pie,
@@ -13,17 +14,6 @@ interface PortfolioAllocationProps {
     value: number;
   }[];
 }
-
-const COLORS = [
-  "#2563eb",
-  "#16a34a",
-  "#f59e0b",
-  "#dc2626",
-  "#9333ea",
-  "#0891b2",
-  "#ea580c",
-  "#64748b",
-];
 
 export default function PortfolioAllocation({
   chartData,
@@ -58,12 +48,13 @@ export default function PortfolioAllocation({
                   `${(percent * 100).toFixed(1)}%`
                 }
               >
-                {chartData.map((_, index) => (
-                  <Cell
-                    key={index}
-                    fill={COLORS[index % COLORS.length]}
-                  />
-                ))}
+                {chartData.map((entry, index) => (
+  <Cell
+    key={index}
+    fill={ASSET_COLORS[entry.name] ?? "#94A3B8"}
+  />
+))}
+            
               </Pie>
 
               <Tooltip
@@ -99,12 +90,12 @@ export default function PortfolioAllocation({
                   <div className="flex items-center gap-2">
 
                     <div
-                      className="w-4 h-4 rounded-full"
-                      style={{
-                        backgroundColor:
-                          COLORS[index % COLORS.length],
-                      }}
-                    />
+  className="w-4 h-4 rounded-full"
+  style={{
+    backgroundColor:
+      ASSET_COLORS[item.name] ?? "#94A3B8",
+  }}
+/>
 
                     <span>{item.name}</span>
 

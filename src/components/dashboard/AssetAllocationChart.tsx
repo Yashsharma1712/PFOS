@@ -8,34 +8,35 @@ import {
 } from "recharts";
 
 import type { Investment } from "../../types/investment";
+import { ASSET_COLORS } from "../../constants/assetColors";
 
 interface Props {
   investments: Investment[];
 }
 
-const COLORS = [
-  "#2563eb",
-  "#16a34a",
-  "#dc2626",
-  "#ca8a04",
-  "#9333ea",
-  "#0891b2",
-];
-
 export default function AssetAllocationChart({
   investments,
 }: Props) {
-  const chartData = investments.map((item) => ({
-    name: item.assetClass,
-    value: item.currentPrice * item.quantity,
-  }));
+  const chartData = Object.values(
+  investments.reduce((acc, item) => {
+    if (!acc[item.assetClass]) {
+      acc[item.assetClass] = {
+        name: item.assetClass,
+        value: 0,
+      };
+    }
 
+    acc[item.assetClass].value +=
+      item.currentPrice * item.quantity;
+
+    return acc;
+  }, {} as Record<string, { name: string; value: number }>)
+);
   return (
     <div className="bg-white rounded-xl shadow p-6">
       <h2 className="text-xl font-semibold mb-4">
         Asset Allocation
       </h2>
-
       <ResponsiveContainer width="100%" height={320}>
         <PieChart>
           <Pie
@@ -45,14 +46,13 @@ export default function AssetAllocationChart({
             outerRadius={110}
             label
           >
-            {chartData.map((_, index) => (
-              <Cell
-                key={index}
-                fill={COLORS[index % COLORS.length]}
-              />
-            ))}
+            {chartData.map((entry, index) => (
+  <Cell
+  key={index}
+  fill={ASSET_COLORS[entry.name] ?? "#94A3B8"}
+/>
+))}
           </Pie>
-
           <Tooltip />
           <Legend />
         </PieChart>

@@ -5,6 +5,7 @@ import PortfolioAllocation from "../../components/investments/PortfolioAllocatio
 import PortfolioStatistics from "../../components/investments/PortfolioStatistics";
 import InvestmentForm from "../../components/investments/InvestmentForm";
 import InvestmentHistory from "../../components/investments/InvestmentHistory";
+import { ASSET_COLORS } from "../../constants/assetColors";
 
 export default function Investments() {
 

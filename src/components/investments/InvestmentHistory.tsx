@@ -1,4 +1,5 @@
 import type { Investment } from "../../types/investment";
+import { ASSET_COLORS } from "../../constants/assetColors";
 
 interface InvestmentHistoryProps {
   investments: Investment[];
@@ -125,8 +126,15 @@ export default function InvestmentHistory({
                   >
 
                     <td className="p-3">
-                      {item.assetClass}
-                    </td>
+  <span
+    className="px-3 py-1 rounded-full text-white text-sm font-medium"
+    style={{
+      backgroundColor: ASSET_COLORS[item.assetClass],
+    }}
+  >
+    {item.assetClass}
+  </span>
+</td>
 
                     <td className="p-3">
                       {item.name}
